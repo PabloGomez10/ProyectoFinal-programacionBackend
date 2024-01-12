@@ -1,13 +1,19 @@
 import express from 'express'
-import ProductManager from './server/data/fs/products.fs.js';
-import UserManager from './server/data/fs/users.fs.js';
+import ProductManager from './src/server/data/fs/products.fs.js';
+import UserManager from './src/server/data/fs/users.fs.js';
+import errorHandler from './src/server/middlewares/errorHandler.js';
+import pathHandler from './src/server/middlewares/pathHandler.js';
 const server = express ()
 
 const PORT = 8080;
 const ready = ()=> console.log('server ready on port ' +PORT);
  
 server.listen(PORT,ready);
- 
+
+// server.use('./',router)
+// server.use(errorHandler)
+// server.use(pathHandler)
+
 server.use(express.urlencoded({extended:true}));
 
 const productManager = new ProductManager();
